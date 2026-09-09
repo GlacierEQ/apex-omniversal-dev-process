@@ -23,8 +23,13 @@ The following capabilities have been empirically verified by automated test asse
 | `INV-08` | **Reference Distributed Log Committer** | Idempotency and split-brain refusal tests | `tests/test_reference_implementations.py` |
 | `INV-09` | **Reference 4-Phase Swarm Dialectic** | Dialectic audit consensus verification | `tests/test_reference_implementations.py` |
 | `INV-10` | **Reference FRE 902 Forensic Hasher** | Bates stamping and digest calculation | `tests/test_reference_implementations.py` |
+| `INV-11` | **Dual-Path Resilience & Circuit Breaker** | Strict invariant hard refusal vs operational DLQ | `tests/test_resilience.py` (Passing 100%) |
+| `INV-12` | **Zero-to-One Sandbox Spike Lifecycle** | TTL management, L0 exemption, graduation gates | `tests/test_spike.py` (Passing 100%) |
+| `INV-13` | **Token-Saver Pointer Architecture** | POINTER.json spec inheritance & gate resolution | `tests/test_pointer.py` (Passing 100%) |
+| `INV-14` | **Heterogeneous Swarm Dialectic Diversity** | Reasoner != Auditor enforcement & compiler proof | `tests/test_reference_implementations.py` |
 
 ---
+
 
 ## 🟡 2. Open Frontiers (Current Non-Claims & Future Trajectory)
 

@@ -106,3 +106,35 @@ class BaseContract:
     defects = ASTStubSentinel.scan_python_file(path)
     path.unlink()
     assert len(defects) == 0
+
+
+def test_detects_docstring_only_stub():
+    with tempfile.NamedTemporaryFile("w+", suffix=".py", delete=False) as f:
+        f.write('''
+def fake_docstring_function():
+    """This function only has a docstring and no code."""
+''')
+        f.flush()
+        path = Path(f.name)
+
+    defects = ASTStubSentinel.scan_python_file(path)
+    path.unlink()
+    assert len(defects) == 1
+    assert defects[0].defect_type == "DOCSTRING_ONLY_STUB"
+
+
+def test_detects_assign_return_trivial_stub():
+    with tempfile.NamedTemporaryFile("w+", suffix=".py", delete=False) as f:
+        f.write('''
+def fake_mock_logic():
+    result = True
+    return result
+''')
+        f.flush()
+        path = Path(f.name)
+
+    defects = ASTStubSentinel.scan_python_file(path)
+    path.unlink()
+    assert len(defects) == 1
+    assert defects[0].defect_type == "ASSIGN_RETURN_TRIVIAL_STUB"
+

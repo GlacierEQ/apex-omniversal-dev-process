@@ -109,32 +109,56 @@ apex-process audit [target_dir]
 
 # Strict CI gate check (exit code 0 only if all gates pass)
 apex-process gate-check [target_dir]
+
+# Manage Zero-to-One exploratory spikes (Safeguard 1)
+apex-process spike init <spike_name> [--ttl-hours 72]
+apex-process spike status [spike_name]
+apex-process spike graduate <spike_name>
+
+# Manage Token-Saver specification pointers (Safeguard 5)
+apex-process pointer create <central_spec_uri>
+apex-process pointer resolve [target_dir]
 ```
 
 ---
 
-## 🔬 V. Behavioral Proof & Invariants ($\mathcal{L}_2$)
+## 🛡️ V. The 6 Hardened Safeguards (Anti-Harm Architecture)
+
+1. **Zero-to-One Sandbox Spikes (`SpikeManager`)**: Prevents the *Cold-Start $\mathcal{L}_2$ Trap* via TTL-bounded exploratory spikes (`spikes/<name>`) exempt from production gate audits until explicitly graduated.
+2. **AST Semantic Anti-Gaming Sentinel (`ASTStubSentinel`)**: Prevents *Goodhart's Law & Syntactic Gaming* by detecting empty docstring stubs and trivial 2-statement mock returns.
+3. **Dual-Path Resilience & Circuit Breakers (`DualPathRouter`)**: Prevents *Cascading Fail-Closed Outages* by strictly distinguishing immutable data corruption invariants (hard refusal) from operational workflows (circuit breaker + DLQ).
+4. **Decoupled Provenance & Behavioral Correctness**: Prevents the *Cryptographic Provenance Illusion* by separating tamper-evident SHA-256 digests from empirical test assertion proofs.
+5. **Token-Saver Pointer Architecture (`PointerResolver`)**: Eliminates *Ceremony Tax & Context Window Bloat* by allowing leaf repositories to inherit root governance via lightweight `POINTER.json`.
+6. **Heterogeneous Swarm Dialectic Diversity**: Prevents *Synthetic Dialectic Echo Chambers* by enforcing Reasoner $\neq$ Auditor model family separation and requiring compiler/test proof receipts.
+
+---
+
+## 🔬 VI. Behavioral Proof & Invariants ($\mathcal{L}_2$)
 
 ```bash
 python3 -m pytest tests/ -v
 ```
 
 ```
-============================== 49 passed in 6.85s ==============================
+============================== 61 passed in 5.36s ==============================
 ```
 
-| Verification Domain | Test Suite | Assertions | Behavioral Proof Status |
+| Verification Domain | Test Suite | Tests | Behavioral Proof Status |
 |---|---|:---:|:---:|
-| **Taxonomy & Invariants** | `tests/test_taxonomy.py` | 5 | 🟢 100% Verified |
+| **Taxonomy & Invariants** | `tests/test_taxonomy.py` | 7 | 🟢 100% Verified |
 | **Epistemic Gate Evaluator** | `tests/test_epistemic.py` | 7 | 🟢 100% Verified |
 | **Cryptographic Receipt Engine** | `tests/test_receipt.py` | 6 | 🟢 100% Verified |
-| **AST Zero-Stub Sentinel** | `tests/test_ast_sentinel.py` | 6 | 🟢 100% Verified |
+| **AST Zero-Stub Sentinel** | `tests/test_ast_sentinel.py` | 8 | 🟢 100% Verified |
 | **Bodybuilder Gate Auditor** | `tests/test_gate_auditor.py` | 4 | 🟢 100% Verified |
 | **Project Forge Scaffolder** | `tests/test_scaffolder.py` | 2 | 🟢 100% Verified |
+| **Zero-to-One Spike Manager** | `tests/test_spike.py` | 3 | 🟢 100% Verified |
+| **Dual-Path Resilience Router** | `tests/test_resilience.py` | 3 | 🟢 100% Verified |
+| **Token-Saver Pointer Resolver** | `tests/test_pointer.py` | 2 | 🟢 100% Verified |
 | **Category Reference Models** | `tests/test_reference_implementations.py` | 15 | 🟢 100% Verified |
 | **CLI Operational Harness** | `tests/test_cli.py` | 4 | 🟢 100% Verified |
-| **Total Test Suite** | **8 Test Modules** | **49 Tests** | **🟢 49/49 Green (100%)** |
+| **Total Test Suite** | **11 Test Modules** | **61 Tests** | **🟢 61/61 Green (100%)** |
 
 - **Shipped Stubs Count:** **0** (Verified by AST Sentinel)
 - **Merkle Root Provenance:** Cataloged in [`EVIDENCE_RECEIPT.json`](file:///Users/kcbflux/APEX_SYSTEM/INFRASTRUCTURE/apex-omniversal-dev-process/EVIDENCE_RECEIPT.json)
 - **License:** GlacierEQ Proprietary v1.1 ([`LICENSE`](file:///Users/kcbflux/APEX_SYSTEM/INFRASTRUCTURE/apex-omniversal-dev-process/LICENSE))
+

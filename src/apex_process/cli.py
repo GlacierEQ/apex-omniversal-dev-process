@@ -188,6 +188,71 @@ def cmd_audit(args: argparse.Namespace) -> int:
         return 1
 
 
+def cmd_spike(args: argparse.Namespace) -> int:
+    """Manages zero-to-one sandbox spikes with TTL (Fix 1: Cold-Start Paralysis)."""
+    action = args.spike_action
+    target = Path(args.target or "./spikes/prototype").resolve()
+
+    if action == "init":
+        name = args.name or target.name
+        purpose = args.purpose or "Rapid zero-to-one exploration"
+        ttl = args.ttl if args.ttl is not None else 72.0
+        mpath = SpikeManager.create_spike(target, name, purpose, ttl_hours=ttl)
+        print(f"🧪 Sandbox Spike '{name}' created at {target}")
+        print(f"⏱️  TTL: {ttl} hours (Expires: {time.ctime(time.time() + ttl * 3600)})")
+        print(f"📜 Manifest: {mpath}")
+        print("🛡️  Exempt from Gate G2/G8 production audits while active.")
+        return 0
+    elif action == "status":
+        active, msg = SpikeManager.check_spike_status(target)
+        if active:
+            print(f"🟢 {msg}")
+            return 0
+        else:
+            print(f"🔴 {msg}", file=sys.stderr)
+            return 1
+    elif action == "graduate":
+        defects = ASTStubSentinel.audit_directory(target)
+        tests_dir = target / "tests"
+        has_tests = tests_dir.is_dir() and len(os.listdir(tests_dir)) > 0
+        zero_stubs = len(defects) == 0
+        success, msg = SpikeManager.graduate_spike(target, has_passing_tests=has_tests, zero_stubs=zero_stubs)
+        if success:
+            print(f"🏆 {msg}")
+            return 0
+        else:
+            print(f"❌ {msg}", file=sys.stderr)
+            return 1
+    return 0
+
+
+def cmd_pointer(args: argparse.Namespace) -> int:
+    """Manages Token-Saver Pointer relationships (Fix 5: Ceremony Tax)."""
+    action = args.pointer_action
+    target = Path(args.target or ".").resolve()
+
+    if action == "create":
+        if not args.spec_root:
+            print("Error: --spec-root required for pointer create", file=sys.stderr)
+            return 1
+        spec_root = Path(args.spec_root).resolve()
+        pfile = PointerResolver.create_pointer_file(target, target.name, spec_root)
+        print(f"🔗 Token-Saver Pointer created: {pfile}")
+        print(f"📍 Inherits governance models from: {spec_root}")
+        return 0
+    elif action == "resolve":
+        manifest = PointerResolver.resolve_pointer(target)
+        if manifest and manifest.is_pointer_valid:
+            print(f"🟢 Pointer Valid for {manifest.repo_name} -> {manifest.target_spec_root}")
+            for k, v in manifest.resolved_files.items():
+                print(f"  • {k}: {v}")
+            return 0
+        else:
+            print(f"🔴 Pointer resolution failed or missing at {target}", file=sys.stderr)
+            return 1
+    return 0
+
+
 def main(argv: Optional[list] = None) -> int:
     parser = argparse.ArgumentParser(
         prog="apex-process",
@@ -228,6 +293,20 @@ def main(argv: Optional[list] = None) -> int:
     p_gate = subparsers.add_parser("gate-check", help="Strict CI gate verification (exit 0 only if all pass)")
     p_gate.add_argument("target", nargs="?", default=".", help="Target directory")
 
+    # spike (Fix 1)
+    p_spike = subparsers.add_parser("spike", help="Manage zero-to-one exploratory spikes with TTL")
+    p_spike.add_argument("spike_action", choices=["init", "status", "graduate"], help="Spike action")
+    p_spike.add_argument("target", nargs="?", default="./spikes/prototype", help="Spike directory")
+    p_spike.add_argument("--name", help="Spike name")
+    p_spike.add_argument("--purpose", help="Spike exploratory purpose")
+    p_spike.add_argument("--ttl", type=float, default=72.0, help="Time to live in hours (default: 72)")
+
+    # pointer (Fix 5)
+    p_pointer = subparsers.add_parser("pointer", help="Manage Token-Saver Pointer references")
+    p_pointer.add_argument("pointer_action", choices=["create", "resolve"], help="Pointer action")
+    p_pointer.add_argument("target", nargs="?", default=".", help="Target directory")
+    p_pointer.add_argument("--spec-root", help="Root specification directory for inherited models")
+
     args = parser.parse_args(argv)
 
     if not args.command:
@@ -248,6 +327,10 @@ def main(argv: Optional[list] = None) -> int:
         if args.command == "gate-check":
             args.json = False
         return cmd_audit(args)
+    elif args.command == "spike":
+        return cmd_spike(args)
+    elif args.command == "pointer":
+        return cmd_pointer(args)
 
     return 0
 

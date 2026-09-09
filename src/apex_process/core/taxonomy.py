@@ -8,6 +8,7 @@ from enum import Enum
 
 
 class EpistemicTier(Enum):
+    L0_SPIKE = "L0_SPIKE"  # Exploratory zero-to-one prototype with TTL
     L0_PRESENCE = "L0_PRESENCE"
     L1_STRUCTURE = "L1_STRUCTURE"
     L2_BEHAVIOR = "L2_BEHAVIOR"

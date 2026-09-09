@@ -1,15 +1,20 @@
 {
   "version": "1.0.0",
-  "timestamp": 1788919272.457243,
+  "timestamp": 1788928613.8861701,
   "target_directory": "/Users/kcbflux/APEX_SYSTEM/INFRASTRUCTURE/apex-omniversal-dev-process",
   "operator": "APEX-OPERATOR-G",
-  "merkle_root_sha256": "c0354e3e73a11373ab72b6a6e0aa755eb70fc0b073d983f5a158a6255ae641ed",
-  "total_files": 43,
+  "merkle_root_sha256": "1238c85c11754cf9e2e8d496b794612fe30c539171034cc19c5129ae3177a589",
+  "total_files": 49,
   "files": [
     {
       "path": ".github/workflows/ci.yml",
       "sha256": "61c5f37abd9023a8db42641769528e4a6aee4832f49f11084b53caa786b2c5f2",
       "size_bytes": 1076
+    },
+    {
+      "path": ".gitignore",
+      "sha256": "68d3b244d59b587884b2427fffc46fa11aa089f6364bb3f9dda5dfd4b0c1c488",
+      "size_bytes": 97
     },
     {
       "path": "BABEL.md",
@@ -33,18 +38,18 @@
     },
     {
       "path": "PROCESS.md",
-      "sha256": "f50d5231153bd6089f5c483b83a7d387266cf8f1e9d814cecdddaffdfeb214bc",
-      "size_bytes": 9449
+      "sha256": "0d3b0ff07590f8ae34b795d033e9cd1df2611bdef3346aa1ff33574c909fd0a3",
+      "size_bytes": 15649
     },
     {
       "path": "QUALITY.md",
-      "sha256": "a108b6b9cdd1de5c0578acfc88991ed3a325b2ea787d08543184c1636e5ea79f",
-      "size_bytes": 3589
+      "sha256": "cbac08f2c813467ffca0e472f702b9c03c216211c264ef65257730cf5966f16a",
+      "size_bytes": 4183
     },
     {
       "path": "README.md",
-      "sha256": "3ce8028627c0a7fc59e66ca33cd292fe52f1773ea8f6cde95ead0f273e226e46",
-      "size_bytes": 9568
+      "sha256": "5529ef34875d8f929e64d1fcec57d03b97e6b5982c3a3de0a8f239d9d312c387",
+      "size_bytes": 11453
     },
     {
       "path": "bin/apex-process",
@@ -118,28 +123,33 @@
     },
     {
       "path": "src/apex_process/__init__.py",
-      "sha256": "8332f14d3d60874457052343123266a76e53eceb3aa576b5ac3f958235335d0e",
-      "size_bytes": 940
+      "sha256": "13872e1f737a759d5b21676ab1a2fa1f1b6c004e006603185ff0fb1ff854afab",
+      "size_bytes": 1370
     },
     {
       "path": "src/apex_process/auditors/ast_sentinel.py",
-      "sha256": "e4667e962a50e1287029a5569eb0fe85ce90d52676e0a557b4d8dd63dd332b11",
-      "size_bytes": 8254
+      "sha256": "96a30d7459c197333e7dbb6b1352f6ea52c1883deb213fd2bb1360d5b67bd100",
+      "size_bytes": 10292
     },
     {
       "path": "src/apex_process/auditors/gate_auditor.py",
-      "sha256": "cd656749fc5eb790422f574a20babe46a5fc83033a2c8ee0f456fcd98104f160",
-      "size_bytes": 8630
+      "sha256": "58b8fb9846a2eeeef7770df95d4d39aff7e9c1c843f6f4120621b344f3d962cb",
+      "size_bytes": 9363
     },
     {
       "path": "src/apex_process/cli.py",
-      "sha256": "015271a4e5b828551f60467a6dc48f8a0d6614566ba8c544db56f3c52507414d",
-      "size_bytes": 10226
+      "sha256": "8ebdfc43b8b1d734129f5123cba4e0af5da528716422ddd862241e25de6723f4",
+      "size_bytes": 14034
     },
     {
       "path": "src/apex_process/core/epistemic.py",
-      "sha256": "a236de8a4ef9ef65cb8c84a064395a4704c32040a23c3fe8cea0399fad360660",
-      "size_bytes": 3766
+      "sha256": "30d471009cc70939371ef5d02c381d1188a70aef62525d32a0389c083acf2680",
+      "size_bytes": 7883
+    },
+    {
+      "path": "src/apex_process/core/pointer.py",
+      "sha256": "95ad06163b011a749c5e70418f90035ce206dd37be1e3bba5ff7adfecd4c8eed",
+      "size_bytes": 2695
     },
     {
       "path": "src/apex_process/core/receipt.py",
@@ -147,9 +157,14 @@
       "size_bytes": 5766
     },
     {
+      "path": "src/apex_process/core/resilience.py",
+      "sha256": "4d51685131a0d241b149867aca48a8b11db5808e7690fb5180a83c10d945606c",
+      "size_bytes": 6526
+    },
+    {
       "path": "src/apex_process/core/taxonomy.py",
-      "sha256": "dcf4e6504c0da32111e0c0e3b463c2e816ef56de00192597fadea9d10076a5c6",
-      "size_bytes": 16023
+      "sha256": "729fe519a8b70b66075adb3cec8593e44cbcae4fd205e8a402232a66bedaa25d",
+      "size_bytes": 16095
     },
     {
       "path": "src/apex_process/reference/__init__.py",
@@ -158,8 +173,8 @@
     },
     {
       "path": "src/apex_process/reference/agent_dialectic.py",
-      "sha256": "ad250ee82a20715e379c71458a24ba2f3d4c509508bbae29e4024d6c64c381a9",
-      "size_bytes": 3774
+      "sha256": "0c159b7f8c547f82c3c461c85b2f2a13fe8a3bb05ae770c4b2cc03e92f75e9cf",
+      "size_bytes": 5666
     },
     {
       "path": "src/apex_process/reference/distributed_log.py",
@@ -183,8 +198,8 @@
     },
     {
       "path": "tests/test_ast_sentinel.py",
-      "sha256": "7b40c95ac7960abd2d7d82dff366dd78d1e6ae5e53c624eb234d2fa1caf04092",
-      "size_bytes": 2799
+      "sha256": "0f18533a5a881a23b3e373f53d22e3de51a8058912f384b6b8f81035a7c29c7a",
+      "size_bytes": 3662
     },
     {
       "path": "tests/test_cli.py",
@@ -202,19 +217,34 @@
       "size_bytes": 1951
     },
     {
+      "path": "tests/test_pointer.py",
+      "sha256": "d30216ab44634265a1691b9c059bf2a5157b5e415df1b2269a17bef6c8993458",
+      "size_bytes": 2124
+    },
+    {
       "path": "tests/test_receipt.py",
       "sha256": "81857a78a74deba7181e4955b53d9ce4f3056b8bca3a1e34f69a7590e958e514",
       "size_bytes": 3284
     },
     {
       "path": "tests/test_reference_implementations.py",
-      "sha256": "857cb5549cc5340eeab2a0085d0048e5ec75946f68277123c3ccb4db97c5afea",
-      "size_bytes": 7685
+      "sha256": "35d97967f640e62d3fb7853156c08ce816cf2b03dd99e330d71432eeb62d55f9",
+      "size_bytes": 8842
+    },
+    {
+      "path": "tests/test_resilience.py",
+      "sha256": "0d43d3137de950ae7d785b1e5edd4aa9aa7076019e297cbbbafab72463fef6c5",
+      "size_bytes": 2305
     },
     {
       "path": "tests/test_scaffolder.py",
       "sha256": "69831c02e1c8a93013d458277dba969dd3c7d88dfffe074882099ca58dc5243d",
       "size_bytes": 1359
+    },
+    {
+      "path": "tests/test_spike.py",
+      "sha256": "6a3e8c341cbe65aab97f02d434ea9908986a75e295404df52f289540838f7519",
+      "size_bytes": 1815
     },
     {
       "path": "tests/test_taxonomy.py",

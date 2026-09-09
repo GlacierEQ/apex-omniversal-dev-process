@@ -170,6 +170,37 @@ def test_dialectic_consensus_adversarial_empty_proposal():
     assert receipt.status_code == ERR_SWARM_EMPTY_PROPOSAL
 
 
+def test_dialectic_consensus_adversarial_homogeneous_auditor_refusal():
+    # If Reasoner == Auditor, must reject (echo chamber prevention)
+    engine = DialecticConsensusEngine(
+        task_id="TASK-SWARM-45",
+        reasoner_id="DEEPSEEK-R1",
+        auditor_id="DEEPSEEK-R1",  # Same architecture
+    )
+    receipt = engine.evaluate_proposal(
+        proposal_text="Valid logic",
+        auditor_approval=True,
+        auditor_notes="Looks fine to me",
+    )
+    assert receipt.consensus_achieved is False
+    assert receipt.status_code == "ERR_SWARM_HOMOGENEOUS_AUDITOR"
+    assert "echo-chamber" in receipt.audit_notes
+
+
+def test_dialectic_consensus_adversarial_missing_compiler_proof():
+    engine = DialecticConsensusEngine(task_id="TASK-SWARM-46")
+    # Non-zero compiler exit code
+    receipt = engine.evaluate_proposal(
+        proposal_text="Syntactically broken code",
+        auditor_approval=True,
+        auditor_notes="I think it passes",
+        compiler_exit_code=1,
+    )
+    assert receipt.consensus_achieved is False
+    assert receipt.status_code == "ERR_SWARM_MISSING_COMPILER_PROOF"
+    assert receipt.compiler_verified is False
+
+
 # ============================================================================
 # Category 09: ForensicBatesManifestCompiler Tests
 # ============================================================================

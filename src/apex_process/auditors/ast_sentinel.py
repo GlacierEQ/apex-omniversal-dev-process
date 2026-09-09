@@ -117,6 +117,37 @@ class ASTStubSentinel:
                                 )
                             )
 
+                    # 4. Docstring-only placeholder (no executable body)
+                    elif isinstance(stmt, ast.Expr) and isinstance(stmt.value, ast.Constant):
+                        defects.append(
+                            StubDefect(
+                                file_path=str(file_path),
+                                line_number=node.lineno,
+                                symbol_name=node.name,
+                                defect_type="DOCSTRING_ONLY_STUB",
+                                reason_code=cls.STUB_REASON_CODE,
+                                message=f"Function '{node.name}' contains only a docstring literal with no executable code.",
+                            )
+                        )
+
+                # Inspect 2-statement trivial mock patterns (e.g. x = True; return x)
+                elif len(node.body) == 2:
+                    stmt1, stmt2 = node.body[0], node.body[1]
+                    if isinstance(stmt1, ast.Assign) and len(stmt1.targets) == 1 and isinstance(stmt1.targets[0], ast.Name):
+                        target_name = stmt1.targets[0].id
+                        if isinstance(stmt2, ast.Return) and isinstance(stmt2.value, ast.Name) and stmt2.value.id == target_name:
+                            if isinstance(stmt1.value, ast.Constant) and stmt1.value.value in (True, False, None):
+                                defects.append(
+                                    StubDefect(
+                                        file_path=str(file_path),
+                                        line_number=node.lineno,
+                                        symbol_name=node.name,
+                                        defect_type="ASSIGN_RETURN_TRIVIAL_STUB",
+                                        reason_code=cls.STUB_REASON_CODE,
+                                        message=f"Function '{node.name}' assigns and immediately returns trivial constant '{stmt1.value.value}'.",
+                                    )
+                                )
+
         return defects
 
     @classmethod
@@ -178,7 +209,7 @@ class ASTStubSentinel:
         """Audits all code files in the directory for stub patterns."""
         target_dir = Path(target_dir).resolve()
         effective_excludes = [
-            ".git", "__pycache__", ".pytest_cache", "node_modules", "venv", ".venv", "tests"
+            ".git", "__pycache__", ".pytest_cache", "node_modules", "venv", ".venv", "tests", "spikes", "scratch"
         ]
         if excludes:
             effective_excludes.extend(excludes)

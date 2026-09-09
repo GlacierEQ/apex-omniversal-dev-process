@@ -11,6 +11,7 @@ import re
 from .ast_sentinel import ASTStubSentinel, StubDefect
 from ..core.receipt import CryptographicReceiptEngine
 from ..core.taxonomy import BODYBUILDER_GATES, BodybuilderGate
+from ..core.pointer import PointerResolver
 
 
 @dataclass
@@ -114,10 +115,17 @@ class GateAuditor:
         else:
             results.append(GateResult("G3", "Cryptographic Receipt", False, "EVIDENCE_RECEIPT.json missing in root", True))
 
+        pointer_manifest = PointerResolver.resolve_pointer(target_dir)
+
         # Gate G4: License Integrity
         lic_file = target_dir / "LICENSE"
-        if lic_file.is_file() and lic_file.stat().st_size > 50:
+        has_lic = lic_file.is_file() and lic_file.stat().st_size > 50
+        inherited_lic = pointer_manifest and "LICENSE" in pointer_manifest.resolved_files
+
+        if has_lic:
             results.append(GateResult("G4", "License Integrity", True, "LICENSE file present and populated", True))
+        elif inherited_lic:
+            results.append(GateResult("G4", "License Integrity", True, f"Inherited LICENSE via POINTER.json from {pointer_manifest.target_spec_root}", True))
         else:
             results.append(GateResult("G4", "License Integrity", False, "LICENSE missing or under 50 bytes", True))
 
@@ -142,8 +150,13 @@ class GateAuditor:
 
         # Gate G7: Babel Polyglot Spec
         babel_file = target_dir / "BABEL.md"
-        if babel_file.is_file() and babel_file.stat().st_size > 100:
+        has_babel = babel_file.is_file() and babel_file.stat().st_size > 100
+        inherited_babel = pointer_manifest and "BABEL.md" in pointer_manifest.resolved_files
+
+        if has_babel:
             results.append(GateResult("G7", "Babel Polyglot Spec", True, "BABEL.md polyglot rationale present", True))
+        elif inherited_babel:
+            results.append(GateResult("G7", "Babel Polyglot Spec", True, f"Inherited BABEL.md via POINTER.json from {pointer_manifest.target_spec_root}", True))
         else:
             results.append(GateResult("G7", "Babel Polyglot Spec", False, "BABEL.md missing or empty", True))
 
