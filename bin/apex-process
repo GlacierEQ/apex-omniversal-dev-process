@@ -1,0 +1,16 @@
+#!/usr/bin/env python3
+"""
+Executable entrypoint for apex-process.
+GlacierEQ / APEX Estate.
+"""
+import sys
+from pathlib import Path
+
+# Add parent directory to sys.path so apex_process package is resolvable
+REPO_ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(REPO_ROOT))
+
+from src.apex_process.cli import main
+
+if __name__ == "__main__":
+    sys.exit(main())

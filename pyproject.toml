@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "apex-omniversal-dev-process"
+version = "1.0.0"
+description = "APEX Omniversal Development Process Engine — End-to-End Development in All 12 Categories"
+readme = "README.md"
+license = { text = "GlacierEQ Proprietary v1.1" }
+authors = [{ name = "GlacierEQ APEX Mastermind" }]
+requires-python = ">=3.10"
+dependencies = []
+
+[project.scripts]
+apex-process = "src.apex_process.cli:main"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_functions = ["test_*"]

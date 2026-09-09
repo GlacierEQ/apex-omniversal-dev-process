@@ -1,0 +1,225 @@
+{
+  "version": "1.0.0",
+  "timestamp": 1788919272.457243,
+  "target_directory": "/Users/kcbflux/APEX_SYSTEM/INFRASTRUCTURE/apex-omniversal-dev-process",
+  "operator": "APEX-OPERATOR-G",
+  "merkle_root_sha256": "c0354e3e73a11373ab72b6a6e0aa755eb70fc0b073d983f5a158a6255ae641ed",
+  "total_files": 43,
+  "files": [
+    {
+      "path": ".github/workflows/ci.yml",
+      "sha256": "61c5f37abd9023a8db42641769528e4a6aee4832f49f11084b53caa786b2c5f2",
+      "size_bytes": 1076
+    },
+    {
+      "path": "BABEL.md",
+      "sha256": "c5ea68ff25f2cb8f113e85096322c2662d8ff78d0b314c533d119e9a7d1428e4",
+      "size_bytes": 4016
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "sha256": "8ac4b4c6a3ebc46c8a9f3291c740af90f54545d20391cd2ee1a5016d5fdee6c5",
+      "size_bytes": 1540
+    },
+    {
+      "path": "ISSUE_CONTRACT.md",
+      "sha256": "2ba59463e98c1fd2ed58c3a6ef6d140129520d6d08bb6f82956432f1746b14c0",
+      "size_bytes": 5482
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "f92ce82a9319a185412d592c64659557ea811dd836d9a099fe942973c10dfdad",
+      "size_bytes": 1379
+    },
+    {
+      "path": "PROCESS.md",
+      "sha256": "f50d5231153bd6089f5c483b83a7d387266cf8f1e9d814cecdddaffdfeb214bc",
+      "size_bytes": 9449
+    },
+    {
+      "path": "QUALITY.md",
+      "sha256": "a108b6b9cdd1de5c0578acfc88991ed3a325b2ea787d08543184c1636e5ea79f",
+      "size_bytes": 3589
+    },
+    {
+      "path": "README.md",
+      "sha256": "3ce8028627c0a7fc59e66ca33cd292fe52f1773ea8f6cde95ead0f273e226e46",
+      "size_bytes": 9568
+    },
+    {
+      "path": "bin/apex-process",
+      "sha256": "7455b1b5ef3ed6de01e4949945b52fb1c5d3f256b870935def40c4cdd0c4e483",
+      "size_bytes": 380
+    },
+    {
+      "path": "categories/01_systems_and_kernels.md",
+      "sha256": "29c88a39c6dff9b2de7a6af9a87abcf0aed38d8571dc92b59ca80b3a69985be0",
+      "size_bytes": 4228
+    },
+    {
+      "path": "categories/02_distributed_systems_and_backends.md",
+      "sha256": "a4c474a7d026eddca51ebd677a11f5eb0ffabf2462fde2aad386bd1aa973ce97",
+      "size_bytes": 4868
+    },
+    {
+      "path": "categories/03_web_and_frontends.md",
+      "sha256": "ba79a53a8eb56816194a4b4a3b83037a87e536daf65cfa54ed19e5379381361d",
+      "size_bytes": 3989
+    },
+    {
+      "path": "categories/04_mobile_and_crossplatform.md",
+      "sha256": "0b689afd10c367b0f77b16e7037dac7a058532a6f8307cae01438c24d8a9ceaf",
+      "size_bytes": 3933
+    },
+    {
+      "path": "categories/05_ai_ml_and_llms.md",
+      "sha256": "bc183eb47ffa6b95322521a0524d52151f21bdba553b5f53ba96a762b0e8e6e9",
+      "size_bytes": 4656
+    },
+    {
+      "path": "categories/06_autonomous_swarms_and_agents.md",
+      "sha256": "7add86797b31e4c2c0c70fe3fb8037142aa957378111b2cf50dcd426d0fa9f54",
+      "size_bytes": 4247
+    },
+    {
+      "path": "categories/07_data_engineering_and_analytics.md",
+      "sha256": "1f79cc72dae0bf2f4855ad9782e7dffb3690cce7bcc25c928d8d629d0037e9f3",
+      "size_bytes": 4194
+    },
+    {
+      "path": "categories/08_cloud_devops_and_sre.md",
+      "sha256": "c19aae93731cb8343d931757908b3ef91373a5ef98b4c3e7227b0d38966e3c10",
+      "size_bytes": 3646
+    },
+    {
+      "path": "categories/09_security_and_forensics.md",
+      "sha256": "95629e4b372f43e7e9bbec5c115eb32b86a7bc1860848fc7a9ae2724a8ae29bf",
+      "size_bytes": 4040
+    },
+    {
+      "path": "categories/10_formal_verification_and_qa.md",
+      "sha256": "085aeceea742705e6661c919a98b2b4d5bb25108f924871b9f4db6b772a827d6",
+      "size_bytes": 4069
+    },
+    {
+      "path": "categories/11_interactive_media_and_3d.md",
+      "sha256": "754fbb6df992b743b5e4f2e2895f4be95af14bc9003743f9cd5e0a9e641c610b",
+      "size_bytes": 3949
+    },
+    {
+      "path": "categories/12_aerospace_and_robotics.md",
+      "sha256": "3ab0985735dcd300337bccd1894bea2a4a08f9f3b9e6fc851ceebaa0991e6a1f",
+      "size_bytes": 4585
+    },
+    {
+      "path": "pyproject.toml",
+      "sha256": "d94815ad626f761c96e5cab8ea92fc0c413a0b1f09b2666cbc58d410ea2de193",
+      "size_bytes": 606
+    },
+    {
+      "path": "src/apex_process/__init__.py",
+      "sha256": "8332f14d3d60874457052343123266a76e53eceb3aa576b5ac3f958235335d0e",
+      "size_bytes": 940
+    },
+    {
+      "path": "src/apex_process/auditors/ast_sentinel.py",
+      "sha256": "e4667e962a50e1287029a5569eb0fe85ce90d52676e0a557b4d8dd63dd332b11",
+      "size_bytes": 8254
+    },
+    {
+      "path": "src/apex_process/auditors/gate_auditor.py",
+      "sha256": "cd656749fc5eb790422f574a20babe46a5fc83033a2c8ee0f456fcd98104f160",
+      "size_bytes": 8630
+    },
+    {
+      "path": "src/apex_process/cli.py",
+      "sha256": "015271a4e5b828551f60467a6dc48f8a0d6614566ba8c544db56f3c52507414d",
+      "size_bytes": 10226
+    },
+    {
+      "path": "src/apex_process/core/epistemic.py",
+      "sha256": "a236de8a4ef9ef65cb8c84a064395a4704c32040a23c3fe8cea0399fad360660",
+      "size_bytes": 3766
+    },
+    {
+      "path": "src/apex_process/core/receipt.py",
+      "sha256": "06740748b7f2a64bfb6907fae7b41a8895cd25e802df54c86d83920cb1241093",
+      "size_bytes": 5766
+    },
+    {
+      "path": "src/apex_process/core/taxonomy.py",
+      "sha256": "dcf4e6504c0da32111e0c0e3b463c2e816ef56de00192597fadea9d10076a5c6",
+      "size_bytes": 16023
+    },
+    {
+      "path": "src/apex_process/reference/__init__.py",
+      "sha256": "1312023348b8be071374525440979bc78aa1725c8b83d7d2af9ac08bf92238dd",
+      "size_bytes": 662
+    },
+    {
+      "path": "src/apex_process/reference/agent_dialectic.py",
+      "sha256": "ad250ee82a20715e379c71458a24ba2f3d4c509508bbae29e4024d6c64c381a9",
+      "size_bytes": 3774
+    },
+    {
+      "path": "src/apex_process/reference/distributed_log.py",
+      "sha256": "4a024da2dd5abb13e02c7a26f1c4c755d4ba4a47932d5342d129268903d92706",
+      "size_bytes": 5036
+    },
+    {
+      "path": "src/apex_process/reference/security_hasher.py",
+      "sha256": "623370a6bae6a2c72b92dc91955b2a52af3a000f5cc7cc681b75c14af30c95b7",
+      "size_bytes": 4732
+    },
+    {
+      "path": "src/apex_process/reference/systems_buffer.py",
+      "sha256": "45046e4414d0912a9f770b869829f772a3ed8ac72840d36d772b8e073f209674",
+      "size_bytes": 3445
+    },
+    {
+      "path": "src/apex_process/scaffolders/project_forge.py",
+      "sha256": "1ca46687c8f9dfe54282389d8981c53573d31f5491c5822a404236cb1f016040",
+      "size_bytes": 10022
+    },
+    {
+      "path": "tests/test_ast_sentinel.py",
+      "sha256": "7b40c95ac7960abd2d7d82dff366dd78d1e6ae5e53c624eb234d2fa1caf04092",
+      "size_bytes": 2799
+    },
+    {
+      "path": "tests/test_cli.py",
+      "sha256": "57dfba2bbce4c00c07ad8e4b74a1358902f949f7a3f98d44b36c7bf65cc2bba7",
+      "size_bytes": 1458
+    },
+    {
+      "path": "tests/test_epistemic.py",
+      "sha256": "d5d7239563be9a21735cf94c30e3c8c4c6830c52fe340204da8ca792880b42d4",
+      "size_bytes": 3082
+    },
+    {
+      "path": "tests/test_gate_auditor.py",
+      "sha256": "806bada5303010e01030f64adbd2eb3c450d9c73ff381455386d072d2f92af8e",
+      "size_bytes": 1951
+    },
+    {
+      "path": "tests/test_receipt.py",
+      "sha256": "81857a78a74deba7181e4955b53d9ce4f3056b8bca3a1e34f69a7590e958e514",
+      "size_bytes": 3284
+    },
+    {
+      "path": "tests/test_reference_implementations.py",
+      "sha256": "857cb5549cc5340eeab2a0085d0048e5ec75946f68277123c3ccb4db97c5afea",
+      "size_bytes": 7685
+    },
+    {
+      "path": "tests/test_scaffolder.py",
+      "sha256": "69831c02e1c8a93013d458277dba969dd3c7d88dfffe074882099ca58dc5243d",
+      "size_bytes": 1359
+    },
+    {
+      "path": "tests/test_taxonomy.py",
+      "sha256": "5a455e801f6684784bb5a57296514fea1307ab11658542672824403ac33eb0c5",
+      "size_bytes": 2078
+    }
+  ]
+}

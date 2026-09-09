@@ -1,0 +1,41 @@
+name: APEX Omniversal Dev Process — CI & Gate Verification
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  epistemic-verification:
+    name: Gates G0-G9 & Invariant Verification
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pytest
+
+      - name: Run Full Behavioral & Adversarial Test Suite
+        run: |
+          python3 -m pytest tests/ -v
+
+      - name: Enforce Zero-Stub Invariant (Gate G8)
+        run: |
+          python3 -m src.apex_process.cli check-stubs .
+
+      - name: Verify Cryptographic SHA-256 Manifest (Gate G3)
+        run: |
+          python3 -m src.apex_process.cli receipt . --verify
+
+      - name: Execute Full Bodybuilder Gate Audit (Gates G0–G9)
+        run: |
+          python3 -m src.apex_process.cli gate-check .
