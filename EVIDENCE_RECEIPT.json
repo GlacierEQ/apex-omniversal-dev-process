@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
   "timestamp": 1788928613.8861701,
-  "target_directory": "/Users/kcbflux/APEX_SYSTEM/INFRASTRUCTURE/apex-omniversal-dev-process",
+  "target_directory": "${HOME}/APEX_SYSTEM/INFRASTRUCTURE/apex-omniversal-dev-process",
   "operator": "APEX-OPERATOR-G",
   "merkle_root_sha256": "1238c85c11754cf9e2e8d496b794612fe30c539171034cc19c5129ae3177a589",
   "total_files": 49,
